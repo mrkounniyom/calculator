@@ -1,7 +1,10 @@
 # My Calculator
 
+## Introduction/Purpose
   Purpose of this project is to use a new GUI API for myself - JavaFX -> https://openjfx.io/ while also retaining some of my Java skills from Undergraduate.
 
+## Tools/Language Selection
+  Making use of ItelliJ-IDEA for development. Java seemed like a nice refresher for myself. When it came to picking JavaFX I wanted to try out a different GUI library than AWT or Swing, which I've used in Undergraduate projects. It looks fresh and modern. 
 
 # Updates Section
 
