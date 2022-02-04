@@ -8,6 +8,15 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
+/**
+ *
+ * Class for testing javafx
+ *
+ * Created 2-4-2022
+ * @author Matthew Kounniyom
+ *
+ */
+
 public class javafxtest extends Application {
     public static void main(String[] args) {
         launch(args);

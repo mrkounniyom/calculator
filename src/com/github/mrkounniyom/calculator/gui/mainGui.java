@@ -11,6 +11,20 @@ import static com.github.mrkounniyom.calculator.operations.advOperations.square;
 import static com.github.mrkounniyom.calculator.operations.basicOperations.*;
 import static com.github.mrkounniyom.calculator.operations.basicOperations.divide;
 
+/**
+ *
+ * Class for main GUI serving as the 'root' of the calculator
+ *
+ * @author Matthew Kounniyom
+ * @version 0.2
+ * @since 0.2
+ *
+ *  Log:
+ *  - 2/4/2022: Moved testing to here to print calculator functions to a window. Play with Javafx package.
+ *
+ *
+ */
+
 public class mainGui extends Application {
 
     public static void main(String[] args) {
