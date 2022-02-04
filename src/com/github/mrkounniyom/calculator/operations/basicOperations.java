@@ -1,4 +1,6 @@
-package com.github.mrkounniyom.calculator;
+package com.github.mrkounniyom.calculator.operations;
+
+import static java.lang.Math.abs;
 
 /**
  *
@@ -49,6 +51,24 @@ public class basicOperations {
      */
     public static double divide(double x, double y) {
         return x / y;
+    }
+
+    /**
+     * Returns the negative of x
+     *
+     * @param x value to be negative(d)
+     */
+    public static double negative(double x) {
+        return x * -1;
+    }
+
+    /**
+     * Returns the positive of x
+     *
+     * @param x value to be positive(d)
+     */
+    public static double positive(double x) {
+        return abs(x);
     }
 
 }

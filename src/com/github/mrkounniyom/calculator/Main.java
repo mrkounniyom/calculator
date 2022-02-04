@@ -1,9 +1,8 @@
 package com.github.mrkounniyom.calculator;
 
-import java.util.ArrayList;
+import com.github.mrkounniyom.calculator.gui.mainGui;
 
-import static com.github.mrkounniyom.calculator.basicOperations.*;
-import static com.github.mrkounniyom.calculator.advOperations.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -24,21 +23,15 @@ public class Main {
     private ArrayList<Float> history = new ArrayList<Float>();
     private float current = 0;
 
+    public static void startgui(String[] args) {
+        mainGui.main(args);
+    }
+
     public static void main(String[] args) {
 	// write your code here
     // bleh
-        double x, y;
-        x = 12.2;
-        y = 25.0;
 
-        System.out.println("x = " + x);
-        System.out.println("y = " + y);
-        System.out.println("Value of x + y = " + add(x, y));
-        System.out.println("Value of x - y = " + subtract(x, y));
-        System.out.println("Value of x * y = " + multiply(x, y));
-        System.out.println("Value of x / y = " + divide(x, y));
-        System.out.println("Square root of x = " + square(x));
-        System.out.println("Square root of y = " + square(y));
+        startgui(args);
 
     }
 }
