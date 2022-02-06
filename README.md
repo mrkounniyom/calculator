@@ -21,3 +21,7 @@ Created some basic junit testing for the operations. Not entirely sure how to ha
 
 Screenshot from testing...
 ![JavaFX Testing](screenshots/gui-test_2-4-2022.png)
+
+### 2-6-2022
+- Created logic to add buttons
+![JavaFX Testing](screenshots/gui-test_2-6-2022.png)

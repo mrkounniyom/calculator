@@ -9,8 +9,8 @@ import java.util.ArrayList;
  * Basic/Scientific Calculator application created for a coding project.
  *
  * @author Matthew Kounniyom
- * @version 0.2
- * @since 0.1
+ * @version 0.0.2
+ * @since 0.0.1
  *
  * Log:
  * - 1/24/2022: added java classes for advance operations and basic operations. Did some testing in the main method.

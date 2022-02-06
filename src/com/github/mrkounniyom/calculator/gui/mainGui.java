@@ -2,25 +2,29 @@ package com.github.mrkounniyom.calculator.gui;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.layout.StackPane;
+import javafx.scene.control.Button;
+import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
-import javafx.stage.Stage;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
+
+import java.util.ArrayList;
+import java.util.Iterator;
 
 import static com.github.mrkounniyom.calculator.operations.advOperations.square;
 import static com.github.mrkounniyom.calculator.operations.basicOperations.*;
-import static com.github.mrkounniyom.calculator.operations.basicOperations.divide;
 
 /**
  *
  * Class for main GUI serving as the 'root' of the calculator
  *
  * @author Matthew Kounniyom
- * @version 0.2
+ * @version 0.0.2
  * @since 0.2
  *
  *  Log:
  *  - 2/4/2022: Moved testing to here to print calculator functions to a window. Play with Javafx package.
+ *  - 2/6/2022: Worked through adding Buttons.
  *
  *
  */
@@ -49,6 +53,30 @@ public class mainGui extends Application {
         textStr = textStr + ("Square root of x = " + square(x) + "\n");
         textStr = textStr + ("Square root of y = " + square(y) + "\n");
 
+
+        // Button initialization
+        int buttonCnt = 10;
+        int fontSize = 15;
+        ArrayList<Button> buttonList = new ArrayList<Button>();
+        Button period, plusMinus;
+        for( int i = 0; i < buttonCnt; i++ ) {
+            Button temp = new Button("" + i);
+            temp.setMinSize(80.0, 80.0);
+            temp.setStyle("-fx-font-size: " + fontSize + ";");
+            if (i == 0) {
+                plusMinus = new Button("+/-");
+                period = new Button(".");
+                plusMinus.setMinSize(80.0, 80.0);
+                period.setMinSize(80.0, 80.0);
+                plusMinus.setStyle("-fx-font-size: " + fontSize + ";");
+                period.setStyle("-fx-font-size: " + fontSize + ";");
+                buttonList.add(period);
+                buttonList.add(temp);
+                buttonList.add(plusMinus);
+            }
+            else
+                buttonList.add(temp);
+        }
 //        primaryStage.setTitle("Hello World!");
 //        Button btn = new Button();
 //        btn.setText("Say 'Hello World'");
@@ -66,7 +94,7 @@ public class mainGui extends Application {
 //        primaryStage.show();
         // Initialize title
         primaryStage.setTitle("My Calculator");
-        StackPane root = new StackPane();
+        GridPane root = new GridPane();
 
         // Text Thing
         Text t = new Text();
@@ -74,8 +102,20 @@ public class mainGui extends Application {
         t.setText(textStr);
 
         // Add text
-        root.getChildren().add(t);
+        // root.add(t, 1, 0);
 
+
+        //add Buttons
+        Iterator<Button> it = buttonList.iterator();
+        int row = 1;
+        int col;
+        while(it.hasNext()) {
+            for(col = 0; col<3; col++) {
+                root.add(it.next(), col, row);
+            }
+            row++;
+            col = 0;
+        }
         // Set window properties
         primaryStage.setScene(new Scene(root, 1366, 768));
 
