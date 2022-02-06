@@ -24,5 +24,6 @@ Screenshot from testing...
 
 ### 2-6-2022
 - Created logic to add number buttons
-- Some of the issues I found were which pane I needed to use to get the buttons in a nice grid. Then needed to add a '.' and '+/-' for basic calculator functions. I am thinking I need to create a operation flip to adding into decimals. 
+- Some of the issues I found were which pane I needed to use to get the buttons in a nice grid. Then needed to add a '.' and '+/-' for basic calculator functions. I am thinking I need to create a operation flip to adding into decimals.
+
 ![JavaFX Testing](screenshots/gui-test_2-6-2022.png)
