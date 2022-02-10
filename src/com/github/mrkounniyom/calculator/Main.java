@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * Basic/Scientific Calculator application created for a coding project.
  *
  * @author Matthew Kounniyom
- * @version 0.0.2
+ * @version 0.0.3
  * @since 0.0.1
  *
  * Log:

@@ -27,3 +27,9 @@ Screenshot from testing...
 - Some of the issues I found were which pane I needed to use to get the buttons in a nice grid. Then needed to add a '.' and '+/-' for basic calculator functions. I am thinking I need to create a operation flip to adding into decimals.
 
 ![JavaFX Testing](screenshots/gui-test_2-6-2022.png)
+
+### 2-10-2022
+- Looked at tutorial(s) and information on how event handling works in JavaFX.
+- Implemented basic event handling to button to add text to the new text area that resides at the top.
+
+![JavaFX Testing](screenshots/gui-test_2-10-2022.png)
