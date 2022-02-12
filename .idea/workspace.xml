@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="5d72de49-c957-4028-822e-c1d6129ff4b1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/calculator/com/github/mrkounniyom/calculator/gui/mainGui$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/calculator/com/github/mrkounniyom/calculator/gui/mainGui$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/calculator/com/github/mrkounniyom/calculator/gui/mainGui.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/calculator/com/github/mrkounniyom/calculator/gui/mainGui.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/github/mrkounniyom/calculator/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/github/mrkounniyom/calculator/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/github/mrkounniyom/calculator/gui/mainGui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/github/mrkounniyom/calculator/gui/mainGui.java" afterDir="false" />
