@@ -5,7 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/calculator/com/github/mrkounniyom/calculator/gui/mainGui$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/calculator/com/github/mrkounniyom/calculator/gui/mainGui$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/calculator/com/github/mrkounniyom/calculator/gui/mainGui.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/calculator/com/github/mrkounniyom/calculator/gui/mainGui.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/github/mrkounniyom/calculator/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/github/mrkounniyom/calculator/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/github/mrkounniyom/calculator/gui/mainGui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/github/mrkounniyom/calculator/gui/mainGui.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -169,6 +168,15 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/github/mrkounniyom/calculator/gui/mainGui.java</url>
+          <line>140</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="javafx.scene.layout.GridPane" memberName="childSet" />

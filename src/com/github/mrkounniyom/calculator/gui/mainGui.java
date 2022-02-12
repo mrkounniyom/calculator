@@ -1,5 +1,6 @@
 package com.github.mrkounniyom.calculator.gui;
 
+import com.github.mrkounniyom.calculator.operations.basicOperations;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -26,6 +27,7 @@ import java.util.Iterator;
  *  - 2/6/2022: Worked through adding Buttons.
  *  - 2/10/2022: Adding logic for button event handling - remapping screen layout.\
  *  - 2/11/2022: Adjusted screenlayout and added more buttons.
+ *  - 2/12/2022: Added VERY basic arithmetic and changed how buttons are created/added.
  *
  *
  */
@@ -34,6 +36,9 @@ public class mainGui extends Application {
 
     private TextArea mainArea = new TextArea("");
     private Label currentButton = new Label("");
+    private String currentFunc = "";
+    private boolean equals = false;
+    private double previous = 0.0;
 
     public static void main(String[] args) {
         launch(args);
@@ -50,32 +55,22 @@ public class mainGui extends Application {
         int fontSize = 15;
 
         // redo buttons to add functions :(
-        String[] buttonStr = {
-                "7", "8", "9", "*",
-                "4", "5", "6", "-",
-                "1", "2", "3", "+",
-                "+/-", "0", ".", "="
+        String[][] buttonStr = {
+                {"7", "8", "9", "*"},
+                {"4", "5", "6", "-"},
+                {"1", "2", "3", "+"},
+                {"+/-", "0", ".", "/"},
+                {"ce", "c", "="}
         };
         ArrayList<Button> buttonList = new ArrayList<Button>();
         Button period, plusMinus;
         for( int i = 0; i < buttonStr.length; i++ ) {
-            Button temp = new Button(buttonStr[i]);
-            temp.setMinSize(80.0, 80.0);
-            temp.setStyle("-fx-font-size: " + fontSize + ";");
-            buttonList.add(temp);
-           /* if (i == 0) {
-                plusMinus = new Button("+/-");
-                period = new Button(".");
-                plusMinus.setMinSize(80.0, 80.0);
-                period.setMinSize(80.0, 80.0);
-                plusMinus.setStyle("-fx-font-size: " + fontSize + ";");
-                period.setStyle("-fx-font-size: " + fontSize + ";");
-                buttonList.add(period);
+            for( int f = 0; f < buttonStr[i].length; f++) {
+                Button temp = new Button(buttonStr[i][f]);
+                temp.setMinSize(80.0, 80.0);
+                temp.setStyle("-fx-font-size: " + fontSize + ";");
                 buttonList.add(temp);
-                buttonList.add(plusMinus);
             }
-            else
-                buttonList.add(temp);*/
         }
 
         // Initialize title
@@ -87,22 +82,22 @@ public class mainGui extends Application {
 
         //add Buttons
         Iterator<Button> it = buttonList.iterator();
-        int row = 1;
-        int colMax = 4;
-        while(it.hasNext()) {
-            for(int col = 0; col<colMax; col++) {
+        for( int i = 0; i < buttonStr.length; i++ ) {
+            for( int f = 0; f < buttonStr[i].length; f++) {
                 Button temp = it.next();
                 // add event handler to button
                 temp.setOnAction(new EventHandler<ActionEvent>() {
                     public void handle(ActionEvent e)
                     {
-                         currentButton.setText("Current Button: " +temp.getText());
-                         buttonFunction(temp.getText());
+                        currentButton.setText("Current Button: " +temp.getText());
+                        if(temp.getText() == "=") {
+                            equals = true;
+                        }
+                        buttonFunction(temp.getText());
                     }
                 });
-                buttons.add(temp, col, row);
+                buttons.add(temp, f, i);
             }
-            row++;
         }
 
         // Add text
@@ -123,37 +118,83 @@ public class mainGui extends Application {
     private void buttonFunction(String button) {
 
         // Make this code cleaner
-        boolean isText = false;
-        double currentValue = 0.0;
+        double currentValue, nextValue;
 
-        /**
-         * something more like
-         *
-         * if(number) {
-         *  if(!notBlank)
-         *      if funcion(x)
-         *          switch(curfunc)
-         *          return
-     *          current = current.concat(new)
-     *
-         *      return
-         *   text = x
-         * }
-         */
+        // checks if button is NOT a number then sets the current function.
+        if(!isNumber(button)) {
+            if(button == "ce" || button == "c") {
+                mainArea.setText("");
+                currentFunc = "";
+                previous = 0.0;
+                return;
+            }
+            if(button != "=") {
+                // sets current function to whatever then returns out of function.
+                currentFunc = button;
+                return;
+            }
+        }
+        // checks if currentFunc not equal __
+        if(currentFunc != "") {
 
-//        if(!isNumber(button)) {
-//            currentValue = -1.0;
-//        } else {
-//            if (mainArea.getText() == "") {
-//                currentValue = Double.valueOf(mainArea.getText());
-//            } else currentValue = Double.valueOf(button);
-//        }
+            currentValue = Double.valueOf(mainArea.getText());
+            if(!equals && previous != 0.0 && currentValue != previous) {
+                mainArea.setText(mainArea.getText() + (button));
+                return;
+            }
+            switch(currentFunc) {
+                case "+":
+                    if(equals) {
+                        mainArea.setText(String.valueOf(basicOperations.add(previous, currentValue)));
+                        ifWhole();
+                        break;
+                    }
+                    break;
+                case "-":
+                    if(equals) {
+                        mainArea.setText(String.valueOf(basicOperations.subtract(previous, currentValue)));
+                        ifWhole();
+                        break;
+                    }
+                    break;
+                case "*":
+                    if(equals) {
+                        mainArea.setText(String.valueOf(basicOperations.multiply(previous, currentValue)));
+                        ifWhole();
+                        break;
+                    }
+                    break;
+                case "/":
+                    if(equals) {
+                        mainArea.setText(String.valueOf(basicOperations.divide(previous, currentValue)));
+                        ifWhole();
+                        break;
+                    }
+                    break;
 
+            }
+            if(equals) {
+                currentFunc = "";
+                equals = false;
+                previous = Double.valueOf(mainArea.getText());
+                return;
+            }
+            if(!equals && previous == 0.0) previous = currentValue;
+            mainArea.setText(button);
+            return;
+        }
+        mainArea.setText(mainArea.getText() + (button));
+    }
 
-
-
-
-        mainArea.setText(String.valueOf(currentValue));
+    private void ifWhole() {
+        int temp = (int) Double.parseDouble(mainArea.getText());
+        double db = Double.valueOf(temp);
+        double db2 = Double.valueOf(mainArea.getText());
+        if(db == db2) {
+            String str = String.valueOf(temp);
+            mainArea.setText(String.valueOf(temp));
+        }
+        return;
     }
 
     private boolean isNumber(String strNum) {

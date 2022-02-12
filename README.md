@@ -33,3 +33,7 @@ Screenshot from testing...
 - Implemented basic event handling to button to add text to the new text area that resides at the top.
 
 ![JavaFX Testing](screenshots/gui-test_2-10-2022.png)
+
+### 2-12-2022
+- Added VERY basic arithmetic and changed how buttons are created/added.
+- I ran into an issue where I needed to retain the current value in the text area after a function was pressed (ie: 34 + 3) then needing to concatenate onto that number vs. changing the number. I also added function to check if the number was 'whole' to retain whole numbers on screen when they are there... vs. doubles. 
