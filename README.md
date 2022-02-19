@@ -43,7 +43,6 @@ Screenshot from testing...
 - Ran into several issues today where I wanted to add the functionality of creating decimal numbers. (ie: pressing 1 + . + 2 should display 1.2 on the screen, so on and so forth.) The problem was how was catching the decimal separator and retaining a function value if it was already set. Like if I were to press 1, '+',  2, '.', 1 , '='- I should get an output of 3.1 and the text area should display 2.1 before hitting the '='.
 - My code looks a little confusing to be honest. The below example is just the part for checking the button is not a number. The function tries to convert the button to a double and if it fails - return false. Then we check if we want to clear the screen. Then, is button not an '=' lets do something BUT check for '.' decimal conversion otherwise set the global variable of currentFunc to 'button'. This is only catching for the non-numbers...
 ```Java
-{
   if(!isNumber(button)) {
             if(button == "ce" || button == "c") {
                 mainArea.setText("");
@@ -76,11 +75,9 @@ Screenshot from testing...
                 }
                 return true;
             }
-}
 ```
 - If we look here - this is where it gets messy... I could probably get away with putting this into its own function so it is a little cleaner. Then re-write what we are doing as is hard to follow. I lean on adding returns and if/else to catch what is going on and to not break things.
 ```java
-{
 if(currentFunc != "") {
            if(adddec && equals) {
                adddec = false;
@@ -134,5 +131,4 @@ if(currentFunc != "") {
            mainArea.setText(button);
            return;
        }
- }
 ```
