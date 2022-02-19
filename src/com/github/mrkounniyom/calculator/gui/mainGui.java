@@ -39,6 +39,7 @@ public class mainGui extends Application {
     private String currentFunc = "";
     private boolean equals = false;
     private double previous = 0.0;
+    private boolean adddec = false;
 
     public static void main(String[] args) {
         launch(args);
@@ -106,7 +107,7 @@ public class mainGui extends Application {
         root.add(currentButton, 0, 2);
 
         // Set window properties
-        primaryStage.setScene(new Scene(root, 320, 500));
+        primaryStage.setScene(new Scene(root, 320, 600));
 
         // Show window pane
         primaryStage.show();
@@ -118,7 +119,7 @@ public class mainGui extends Application {
     private void buttonFunction(String button) {
 
         // Make this code cleaner
-        double currentValue, nextValue;
+        double currentValue = 0.0;
 
         // checks if button is NOT a number then sets the current function.
         if(!isNumber(button)) {
@@ -130,6 +131,15 @@ public class mainGui extends Application {
             }
             if(button != "=") {
                 // sets current function to whatever then returns out of function.
+                if(button == "." ) {
+                    adddec = true;
+                    if (button == "." && previous != 0.0) {
+                        mainArea.setText(button);
+                    }
+                    else mainArea.setText(mainArea.getText() + (button));
+                    return;
+                }
+                adddec = false;
                 currentFunc = button;
                 return;
             }
@@ -137,9 +147,15 @@ public class mainGui extends Application {
         // checks if currentFunc not equal __
         if(currentFunc != "") {
 
-            currentValue = Double.valueOf(mainArea.getText());
-            if(!equals && previous != 0.0 && currentValue != previous) {
-                mainArea.setText(mainArea.getText() + (button));
+            if(adddec && equals) {
+                adddec = false;
+                currentValue = Double.valueOf(mainArea.getText());
+            } else if (!adddec) {
+                currentValue = Double.valueOf(mainArea.getText());
+            }
+            if(!equals && previous != 0.0 && !adddec) {
+                if(currentFunc != "" && previous != 0.0) mainArea.setText(button);
+                else mainArea.setText(mainArea.getText() + (button));
                 return;
             }
             switch(currentFunc) {
@@ -171,7 +187,6 @@ public class mainGui extends Application {
                         break;
                     }
                     break;
-
             }
             if(equals) {
                 currentFunc = "";
@@ -180,6 +195,7 @@ public class mainGui extends Application {
                 return;
             }
             if(!equals && previous == 0.0) previous = currentValue;
+            if(adddec) { mainArea.setText(mainArea.getText() + (button)); return; }
             mainArea.setText(button);
             return;
         }

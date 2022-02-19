@@ -172,8 +172,18 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/github/mrkounniyom/calculator/gui/mainGui.java</url>
-          <line>140</line>
-          <option name="timeStamp" value="11" />
+          <line>153</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/github/mrkounniyom/calculator/gui/mainGui.java</url>
+          <line>196</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/github/mrkounniyom/calculator/gui/mainGui.java</url>
+          <line>151</line>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -182,5 +192,11 @@
         <PinnedItemInfo parentTag="javafx.scene.layout.GridPane" memberName="childSet" />
       </pinned-members>
     </pin-to-top-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="private Label currentButton = new Label(&quot;&quot;);" />
+        <watch expression="private TextArea mainArea = new TextArea(&quot;&quot;);" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>
