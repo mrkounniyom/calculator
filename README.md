@@ -148,3 +148,8 @@ if(currentFunc != "") {
      return;
 }
 ```
+### 2-22-2022
+- Did some rearranging of certain lines of code and added useful comments to help understand what is happening.
+- Created a 'reset' function to help reset some of the global variables to clean up buttonFunction.
+- Added functionality for changing the sign of the current value on the screen.
+- Altered some lines of buttonFunction to help with some arithmetic issues. It does appear some of the doubles arithmetic is not working properly. Need to look into that in the future.  

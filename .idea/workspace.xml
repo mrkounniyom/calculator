@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5d72de49-c957-4028-822e-c1d6129ff4b1" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/calculator/com/github/mrkounniyom/calculator/gui/mainGui$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/calculator/com/github/mrkounniyom/calculator/gui/mainGui$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/calculator/com/github/mrkounniyom/calculator/gui/mainGui.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/calculator/com/github/mrkounniyom/calculator/gui/mainGui.class" afterDir="false" />
@@ -49,16 +50,17 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="D:/Downloads/Zips/openjfx-17.0.2_windows-x64_bin-sdk/javafx-sdk-17.0.2/lib" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../javafx-sdk-17.0.2/lib" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="advanced.settings" />
   </component>
   <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.github.mrkounniyom.calculator.Main" />
       <module name="calculator" />
-      <option name="VM_PARAMETERS" value="--module-path D:\Downloads\Zips\openjfx-17.0.2_windows-x64_bin-sdk\javafx-sdk-17.0.2\lib --add-modules=javafx.controls" />
+      <option name="VM_PARAMETERS" value="--module-path C:\\Users\chewy\Documents\coding_projects\javafx-sdk-17.0.2\lib --add-modules=javafx.controls" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.github.mrkounniyom.calculator.operations.*" />
@@ -168,25 +170,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/github/mrkounniyom/calculator/gui/mainGui.java</url>
-          <line>153</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/github/mrkounniyom/calculator/gui/mainGui.java</url>
-          <line>196</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/github/mrkounniyom/calculator/gui/mainGui.java</url>
-          <line>151</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="javafx.scene.layout.GridPane" memberName="childSet" />
@@ -198,5 +181,9 @@
         <watch expression="private TextArea mainArea = new TextArea(&quot;&quot;);" />
       </configuration>
     </watches-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

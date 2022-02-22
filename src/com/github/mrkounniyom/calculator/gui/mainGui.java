@@ -34,12 +34,16 @@ import java.util.Iterator;
 
 public class mainGui extends Application {
 
-    private TextArea mainArea = new TextArea("");
-    private Label currentButton = new Label("");
-    private String currentFunc = "";
+    // JavaFX Stores
+    private final TextArea mainArea = new TextArea("");
+    private final Label currentButton = new Label("");
+    private double previousValue = 0.0d;
+    private double currentValue;
+
+    // Variables for functionality
     private boolean equals = false;
-    private double previous = 0.0;
-    private boolean adddec = false;
+    private boolean addDec = false;
+    private String currentFunc = "";
 
     public static void main(String[] args) {
         launch(args);
@@ -119,70 +123,86 @@ public class mainGui extends Application {
     private void buttonFunction(String button) {
 
         // Make this code cleaner
-        double currentValue = 0.0;
+        // default double value is 0.0d
+        currentValue = 0.0d;
 
         // checks if button is NOT a number then sets the current function.
-        if(!isNumber(button)) {
+        if(!isNumber(button) && button != "=") {
+            // clears screen/values
             if(button == "ce" || button == "c") {
-                mainArea.setText("");
-                currentFunc = "";
-                previous = 0.0;
+                reset();
                 return;
             }
-            if(button != "=") {
-                // sets current function to whatever then returns out of function.
-                if(button == "." ) {
-                    adddec = true;
-                    if (button == "." && previous != 0.0) {
-                        mainArea.setText(button);
-                    }
-                    else mainArea.setText(mainArea.getText() + (button));
+            if(button=="+/-") {
+                try {
+                    currentValue = Double.valueOf(mainArea.getText());
+                } catch (java.lang.NumberFormatException e) {
+                    currentValue = previousValue;
+                }
+                if(currentValue == 0.0d || currentValue == 0.0) {
+                    return;
+                } else if((currentValue - currentValue) == 0.0) {
+                    mainArea.setText(String.valueOf(basicOperations.negative(currentValue)));
+                }
+                else mainArea.setText(String.valueOf(basicOperations.positive(currentValue)));
+                ifWhole();
+                return;
+            }
+            // sets current function to whatever then returns out of function.
+            if(button == "." ) {
+                addDec = true;
+                if (currentFunc != "") {
+                    previousValue = Double.valueOf(mainArea.getText());
+                    mainArea.setText(button);
                     return;
                 }
-                adddec = false;
-                currentFunc = button;
+                else mainArea.setText(mainArea.getText() + (button));
                 return;
             }
+            addDec = false;
+            currentFunc = button;
+            previousValue = Double.valueOf(mainArea.getText());
+            return;
         }
         // checks if currentFunc not equal __
         if(currentFunc != "") {
 
-            if(adddec && equals) {
-                adddec = false;
+            if(addDec && equals) {
+                addDec = false;
                 currentValue = Double.valueOf(mainArea.getText());
-            } else if (!adddec) {
+            } else if (!addDec) {
                 currentValue = Double.valueOf(mainArea.getText());
             }
-            if(!equals && previous != 0.0 && !adddec) {
-                if(currentFunc != "" && previous != 0.0) mainArea.setText(button);
+            if(!equals && previousValue != 0.0 && !addDec) {
+                if(currentFunc != "" && previousValue != 0.0d) mainArea.setText(button);
                 else mainArea.setText(mainArea.getText() + (button));
                 return;
             }
             switch(currentFunc) {
                 case "+":
                     if(equals) {
-                        mainArea.setText(String.valueOf(basicOperations.add(previous, currentValue)));
+                        mainArea.setText(String.valueOf(basicOperations.add(previousValue, currentValue)));
                         ifWhole();
                         break;
                     }
                     break;
                 case "-":
                     if(equals) {
-                        mainArea.setText(String.valueOf(basicOperations.subtract(previous, currentValue)));
+                        mainArea.setText(String.valueOf(basicOperations.subtract(previousValue, currentValue)));
                         ifWhole();
                         break;
                     }
                     break;
                 case "*":
                     if(equals) {
-                        mainArea.setText(String.valueOf(basicOperations.multiply(previous, currentValue)));
+                        mainArea.setText(String.valueOf(basicOperations.multiply(previousValue, currentValue)));
                         ifWhole();
                         break;
                     }
                     break;
                 case "/":
                     if(equals) {
-                        mainArea.setText(String.valueOf(basicOperations.divide(previous, currentValue)));
+                        mainArea.setText(String.valueOf(basicOperations.divide(previousValue, currentValue)));
                         ifWhole();
                         break;
                     }
@@ -191,15 +211,24 @@ public class mainGui extends Application {
             if(equals) {
                 currentFunc = "";
                 equals = false;
-                previous = Double.valueOf(mainArea.getText());
+                previousValue = Double.valueOf(mainArea.getText());
                 return;
             }
-            if(!equals && previous == 0.0) previous = currentValue;
-            if(adddec) { mainArea.setText(mainArea.getText() + (button)); return; }
+            if(previousValue == 0.0d) previousValue = currentValue;
+            if(addDec) { mainArea.setText(mainArea.getText() + (button)); return; }
             mainArea.setText(button);
             return;
         }
         mainArea.setText(mainArea.getText() + (button));
+    }
+
+    private void reset() {
+        mainArea.setText("");
+        currentFunc = "";
+        previousValue = 0.0d;
+        equals = false;
+        addDec = false;
+        return;
     }
 
     private void ifWhole() {
