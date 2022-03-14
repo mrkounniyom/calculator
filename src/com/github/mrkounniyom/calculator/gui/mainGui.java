@@ -1,5 +1,6 @@
 package com.github.mrkounniyom.calculator.gui;
 
+import com.github.mrkounniyom.calculator.operations.advOperations;
 import com.github.mrkounniyom.calculator.operations.basicOperations;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -14,6 +15,7 @@ import javafx.stage.Stage;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Objects;
 
 /**
  *
@@ -36,6 +38,7 @@ public class mainGui extends Application {
 
     // JavaFX Stores
     private final TextArea mainArea = new TextArea("");
+    private final TextArea hist = new TextArea("");
     private final Label currentButton = new Label("");
     private double previousValue = 0.0d;
     private double currentValue;
@@ -44,6 +47,7 @@ public class mainGui extends Application {
     private boolean equals = false;
     private boolean addDec = false;
     private String currentFunc = "";
+    private String histString = "";
 
     public static void main(String[] args) {
         launch(args);
@@ -56,11 +60,17 @@ public class mainGui extends Application {
         mainArea.setPrefRowCount(5);
         mainArea.setPrefColumnCount(10);
 
+        hist.setFont(new Font(18.0));
+        hist.setPrefColumnCount(10);
+        hist.setPrefRowCount(5);
+        hist.setEditable(false);
+
         // Button initialization
         int fontSize = 15;
 
         // redo buttons to add functions :(
         String[][] buttonStr = {
+                {"^2", "sqrt", "%", "<="},
                 {"7", "8", "9", "*"},
                 {"4", "5", "6", "-"},
                 {"1", "2", "3", "+"},
@@ -108,10 +118,11 @@ public class mainGui extends Application {
         // Add text
         root.add(mainArea, 0, 0);
         root.add(buttons, 0, 1);
-        root.add(currentButton, 0, 2);
+        //root.add(currentButton, 0, 2);
+        root.add(hist, 1, 0);
 
         // Set window properties
-        primaryStage.setScene(new Scene(root, 320, 600));
+        primaryStage.setScene(new Scene(root, 530, 600));
 
         // Show window pane
         primaryStage.show();
@@ -127,108 +138,163 @@ public class mainGui extends Application {
         currentValue = 0.0d;
 
         // checks if button is NOT a number then sets the current function.
-        if(!isNumber(button) && button != "=") {
-            // clears screen/values
-            if(button == "ce" || button == "c") {
-                reset();
-                return;
-            }
-            if(button=="+/-") {
-                try {
-                    currentValue = Double.valueOf(mainArea.getText());
-                } catch (java.lang.NumberFormatException e) {
-                    currentValue = previousValue;
-                }
-                if(currentValue == 0.0d || currentValue == 0.0) {
-                    return;
-                } else if((currentValue - currentValue) == 0.0) {
-                    mainArea.setText(String.valueOf(basicOperations.negative(currentValue)));
-                }
-                else mainArea.setText(String.valueOf(basicOperations.positive(currentValue)));
-                ifWhole();
-                return;
-            }
-            // sets current function to whatever then returns out of function.
-            if(button == "." ) {
-                addDec = true;
-                if (currentFunc != "") {
-                    previousValue = Double.valueOf(mainArea.getText());
-                    mainArea.setText(button);
-                    return;
-                }
-                else mainArea.setText(mainArea.getText() + (button));
-                return;
-            }
-            addDec = false;
-            currentFunc = button;
-            previousValue = Double.valueOf(mainArea.getText());
-            return;
+        if(!isNumber(button) && !Objects.equals(button, "=")) {
+            nonNumericButtons(button);
         }
         // checks if currentFunc not equal __
-        if(currentFunc != "") {
+        else if(!Objects.equals(currentFunc, "")) {
+            buttonFunctions(button);
+        } else {
+            mainArea.setText(mainArea.getText() + (button));
+        }
+    }
 
-            if(addDec && equals) {
-                addDec = false;
-                currentValue = Double.valueOf(mainArea.getText());
-            } else if (!addDec) {
-                currentValue = Double.valueOf(mainArea.getText());
-            }
-            if(!equals && previousValue != 0.0 && !addDec) {
-                if(currentFunc != "" && previousValue != 0.0d) mainArea.setText(button);
-                else mainArea.setText(mainArea.getText() + (button));
-                return;
-            }
-            switch(currentFunc) {
-                case "+":
-                    if(equals) {
-                        mainArea.setText(String.valueOf(basicOperations.add(previousValue, currentValue)));
-                        ifWhole();
-                        break;
-                    }
-                    break;
-                case "-":
-                    if(equals) {
-                        mainArea.setText(String.valueOf(basicOperations.subtract(previousValue, currentValue)));
-                        ifWhole();
-                        break;
-                    }
-                    break;
-                case "*":
-                    if(equals) {
-                        mainArea.setText(String.valueOf(basicOperations.multiply(previousValue, currentValue)));
-                        ifWhole();
-                        break;
-                    }
-                    break;
-                case "/":
-                    if(equals) {
-                        mainArea.setText(String.valueOf(basicOperations.divide(previousValue, currentValue)));
-                        ifWhole();
-                        break;
-                    }
-                    break;
-            }
-            if(equals) {
-                currentFunc = "";
-                equals = false;
-                previousValue = Double.valueOf(mainArea.getText());
-                return;
-            }
-            if(previousValue == 0.0d) previousValue = currentValue;
-            if(addDec) { mainArea.setText(mainArea.getText() + (button)); return; }
-            mainArea.setText(button);
+    private void nonNumericButtons(String button) {
+        // clears screen/values
+        if(button.equals("ce") || button.equals("c")) {
+            reset();
             return;
         }
-        mainArea.setText(mainArea.getText() + (button));
+        if(button.equals("+/-")) {
+            try {
+                currentValue = Double.parseDouble(mainArea.getText());
+            } catch (java.lang.NumberFormatException e) {
+                currentValue = previousValue;
+            }
+            if(currentValue == 0.0d || currentValue == 0.0) {
+                return;
+            } else if((currentValue - currentValue) == 0.0) {
+                mainArea.setText(String.valueOf(basicOperations.negative(currentValue)));
+            }
+            else mainArea.setText(String.valueOf(basicOperations.positive(currentValue)));
+            ifWhole();
+            histStringAdd(button + " " + mainArea.getText());
+            return;
+        }
+        // sets current function to whatever then returns out of function.
+        if(Objects.equals(button, ".")) {
+            addDec = true;
+            if (currentFunc != "") {
+                previousValue = Double.parseDouble(mainArea.getText());
+                mainArea.setText(button);
+                return;
+            }
+            else mainArea.setText(mainArea.getText() + (button));
+            return;
+        }
+        if(button.equals("^2")) {
+            // Square
+            if(previousValue != 0.0d || !mainArea.getText().equals("")) {
+                previousValue  = Double.parseDouble(mainArea.getText());
+                mainArea.setText(String.valueOf(advOperations.squared(previousValue)));
+                ifWhole();
+                histStringAdd(button + " " + mainArea.getText());
+            }
+            return;
+        }
+        if(button.equals("sqrt")) {
+            //square root
+            if(previousValue != 0.0d || !mainArea.getText().equals("")) {
+                previousValue  = Double.parseDouble(mainArea.getText());
+                mainArea.setText(String.valueOf(advOperations.square(previousValue)));
+                ifWhole();
+                histStringAdd(button + " " + mainArea.getText());
+            }
+            return;
+        }
+        if(button.equals("%")) {
+            //percent
+            if(previousValue != 0.0d || !mainArea.getText().equals("")) {
+                previousValue  = Double.parseDouble(mainArea.getText());
+                mainArea.setText(String.valueOf(advOperations.percentage(previousValue)));
+                ifWhole();
+                histStringAdd(button + " " + mainArea.getText());
+            }
+            return;
+        }
+        if(button.equals("<=")) {
+            //backspace
+            if(previousValue != 0.0d || !mainArea.getText().equals("")) {
+                String temp  = mainArea.getText();
+                int len = temp.length();
+                mainArea.setText(temp.substring(0, (len-1)));
+            }
+            return;
+        }
+        currentFunc = button;
+        previousValue = Double.parseDouble(mainArea.getText());
+    }
+
+    private void buttonFunctions(String button) {
+        // Are we working in decimals?
+        if(addDec) {
+            addDec = false;
+            currentValue = Double.parseDouble(mainArea.getText());
+        } else {
+            currentValue = Double.parseDouble(mainArea.getText());
+        }
+
+        if(!equals && previousValue != 0.0 && !addDec) {
+            if(currentFunc != "" && previousValue != 0.0d) mainArea.setText(button);
+            else mainArea.setText(mainArea.getText() + (button));
+            return;
+        }
+        histStringAdd(previousValue + " " + currentFunc + " " + currentValue);
+        switch(currentFunc) {
+
+            case "+":
+                if(equals) {
+                    mainArea.setText(String.valueOf(basicOperations.add(previousValue, currentValue)));
+                    ifWhole();
+                    break;
+                }
+                break;
+            case "-":
+                if(equals) {
+                    mainArea.setText(String.valueOf(basicOperations.subtract(previousValue, currentValue)));
+                    ifWhole();
+                    break;
+                }
+                break;
+            case "*":
+                if(equals) {
+                    mainArea.setText(String.valueOf(basicOperations.multiply(previousValue, currentValue)));
+                    ifWhole();
+                    break;
+                }
+                break;
+            case "/":
+                if(equals) {
+                    mainArea.setText(String.valueOf(basicOperations.divide(previousValue, currentValue)));
+                    ifWhole();
+                    break;
+                }
+                break;
+        }
+        if(equals) {
+            histStringAdd("= " + mainArea.getText());
+            currentFunc = "";
+            equals = false;
+            previousValue = Double.parseDouble(mainArea.getText());
+            return;
+        }
+        if(previousValue == 0.0d) previousValue = currentValue;
+        if(addDec) { mainArea.setText(mainArea.getText() + (button)); return; }
+        mainArea.setText(button);
+    }
+
+    private void histStringAdd(String s) {
+        histString = histString + " " + s;
     }
 
     private void reset() {
+        hist.appendText(histString + "\n");
+        histString = "";
         mainArea.setText("");
         currentFunc = "";
         previousValue = 0.0d;
         equals = false;
         addDec = false;
-        return;
     }
 
     private void ifWhole() {
