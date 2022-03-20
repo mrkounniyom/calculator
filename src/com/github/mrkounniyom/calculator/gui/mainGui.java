@@ -251,7 +251,8 @@ public class mainGui extends Application {
                 break;
             case "-":
                 if(equals) {
-                    mainArea.setText(String.valueOf(basicOperations.subtract(previousValue, currentValue)));
+                    Double val = basicOperations.subtract(previousValue, currentValue);
+                    mainArea.setText(String.valueOf(val));
                     ifWhole();
                     break;
                 }

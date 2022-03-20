@@ -159,3 +159,6 @@ if(currentFunc != "") {
 - Added advanced operations which was a lot easier than the basics.
 - Moved some logic out into different functions.
 - Need to fix number appending as it seems to break after a function key is hit. 
+
+### 3-18-2022
+- Fixed subtraction error. the ```double``` primitive was not as accurate as I'd like it to be so had to use ```BigDecimal``` for doing the arithmetic. 

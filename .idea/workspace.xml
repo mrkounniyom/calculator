@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="5d72de49-c957-4028-822e-c1d6129ff4b1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/calculator/com/github/mrkounniyom/calculator/operations/basicOperations.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/calculator/com/github/mrkounniyom/calculator/operations/basicOperations.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/github/mrkounniyom/calculator/gui/mainGui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/github/mrkounniyom/calculator/gui/mainGui.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/github/mrkounniyom/calculator/operations/basicOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/github/mrkounniyom/calculator/operations/basicOperations.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

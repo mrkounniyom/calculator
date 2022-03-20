@@ -1,5 +1,7 @@
 package com.github.mrkounniyom.calculator.operations;
 
+import java.math.BigDecimal;
+
 import static java.lang.Math.abs;
 
 /**
@@ -30,7 +32,9 @@ public class basicOperations {
      * @param y value to be subtracted
      */
     public static double subtract(double x, double y) {
-        return x - y;
+        BigDecimal temp = BigDecimal.valueOf(x);
+        BigDecimal temp2 = BigDecimal.valueOf(y);
+        return temp.subtract(temp2).doubleValue();
     }
 
     /**
