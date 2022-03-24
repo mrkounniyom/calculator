@@ -22,7 +22,9 @@ public class basicOperations {
      * @param y value to be added
      */
     public static double add(double x, double y) {
-        return x + y;
+        BigDecimal temp = BigDecimal.valueOf(x);
+        BigDecimal temp2 = BigDecimal.valueOf(y);
+        return temp.add(temp2).doubleValue();
     }
 
     /**
@@ -44,7 +46,9 @@ public class basicOperations {
      * @param y value to be multiplied
      */
     public static double multiply(double x, double y) {
-        return x * y;
+        BigDecimal temp = BigDecimal.valueOf(x);
+        BigDecimal temp2 = BigDecimal.valueOf(y);
+        return temp.multiply(temp2).doubleValue();
     }
 
     /**
@@ -54,7 +58,9 @@ public class basicOperations {
      * @param y value to be divided
      */
     public static double divide(double x, double y) {
-        return x / y;
+        BigDecimal temp = BigDecimal.valueOf(x);
+        BigDecimal temp2 = BigDecimal.valueOf(y);
+        return temp.divide(temp2).doubleValue();
     }
 
     /**

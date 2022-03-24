@@ -162,3 +162,12 @@ if(currentFunc != "") {
 
 ### 3-18-2022
 - Fixed subtraction error. the ```double``` primitive was not as accurate as I'd like it to be so had to use ```BigDecimal``` for doing the arithmetic. 
+
+### 3-23-2022
+- Adjusted logic for buttons to append numbers after hitting a operation button. For example, if you were wanting to add 10 + 10 it should display 10, clear the screen then display 10 again. 
+
+### 3-24-2022
+- More adjustments. I tried to extend the BigDecimal portion of the code changes to all other basic operations and it broke things. I JUST figured it out.. copy/paste got me good. 
+- Added a boolean value to mark if the current value is the 'default' from when the calculator is started up. Using ```currentValue == 0.0d``` caused some issues with trying to use 0.
+- Adjusted histString to not append when the current value is nothing. 
+- Created a button Array List to track when a non "." is pressed when you are appending a decimal. 
