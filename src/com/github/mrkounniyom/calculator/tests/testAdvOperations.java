@@ -8,6 +8,9 @@ import static org.junit.Assert.assertNotEquals;
 
 public class testAdvOperations {
 
+    /**
+     * Tests square root for success
+     */
     @Test
     public void squareRootSuccess() {
         assertEquals(5.0, advOperations.square(25.0), 0.0);
@@ -15,11 +18,17 @@ public class testAdvOperations {
         assertEquals(8.0, advOperations.square(64.0), 0.0);
     }
 
+    /**
+     * Tests square root for failure.
+     */
     @Test
     public void squareRootFail() {
         assertNotEquals(4.0, advOperations.square(25.0), 0.0);
     }
 
+    /**
+     * Tests squared for success.
+     */
     @Test
     public void squareSuccess() {
         assertEquals(25.0, advOperations.squared(5.0), 0.0);
@@ -27,11 +36,17 @@ public class testAdvOperations {
         assertEquals(64.0, advOperations.squared(8.0), 0.0);
     }
 
+    /**
+     * Tests squared for failure.
+     */
     @Test
     public void squareFail() {
         assertNotEquals(4.0, advOperations.squared(25.0), 0.0);
     }
 
+    /**
+     * Tests percentage for success.
+     */
     @Test
     public void percentageSuccess() {
         assertEquals(0.05, advOperations.percentage(5.0), 0.0);
@@ -39,6 +54,9 @@ public class testAdvOperations {
         assertEquals(0.08, advOperations.percentage(8.0), 0.0);
     }
 
+    /**
+     * Tests percentage for failure.
+     */
     @Test
     public void percentageFail() {
         assertNotEquals(4.0, advOperations.percentage(25.0), 0.0);

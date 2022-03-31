@@ -7,6 +7,9 @@ import static org.junit.Assert.*;
 
 public class testBasicOperations {
 
+    /**
+     * Tests addition for success.
+     */
     @Test
     public void additionSuccess() {
         assertEquals(2.0, basicOperations.add(1.0, 1.0), 0.0);
@@ -14,11 +17,17 @@ public class testBasicOperations {
         assertEquals(5.0, basicOperations.add(3.0, 2.0), 0.0);
     }
 
+    /**
+     * Tests addition for failure.
+     */
     @Test
     public void additionFail() {
         assertNotEquals(2.99, basicOperations.add(1.999, 0.99999999999), 0.0);
     }
 
+    /**
+     * Tests subtraction for success.
+     */
     @Test
     public void subtractionSuccess() {
         assertEquals(2.0, basicOperations.subtract(5.0, 3.0), 0.0);
@@ -26,11 +35,17 @@ public class testBasicOperations {
         assertEquals(96.0, basicOperations.subtract(99.0, 3.0), 0.0);
     }
 
+    /**
+     * Tests subtraction for failure.
+     */
     @Test
     public void subtractionFail() {
         assertNotEquals(2.99, basicOperations.subtract(1.999, 0.99999999999), 0.0);
     }
 
+    /**
+     * Tests multiplication for success.
+     */
     @Test
     public void multiplicationSuccess() {
         assertEquals(110.0, basicOperations.multiply(11.0, 10.0), 0.0);
@@ -38,11 +53,17 @@ public class testBasicOperations {
         assertEquals(7.0, basicOperations.multiply(2.0, 3.5), 0.0);
     }
 
+    /**
+     * Tests multiplication for failure
+     */
     @Test
     public void multiplicationFail() {
         assertNotEquals(2.99, basicOperations.multiply(1.999, 0.99999999999), 0.0);
     }
 
+    /**
+     * Tests division for success
+     */
     @Test
     public void divisionSuccess() {
         assertEquals(2.0, basicOperations.divide(18.0, 9.0), 0.0);
@@ -50,11 +71,17 @@ public class testBasicOperations {
         assertEquals(100.0, basicOperations.divide(1000.0, 10.0), 0.0);
     }
 
+    /**
+     * Tests division for failure
+     */
     @Test
     public void divisionFail() {
         assertNotEquals(2.99, basicOperations.divide(1.999, 0.99999999999), 0.0);
     }
 
+    /**
+     * Tests negation for success.
+     */
     @Test
     public void negativeSuccess() {
         assertEquals(-18.0, basicOperations.negative(18.0), 0.0);
@@ -62,21 +89,31 @@ public class testBasicOperations {
         assertEquals(-1000.0, basicOperations.negative(1000.0), 0.0);
     }
 
+    /**
+     * Tests negation for failure.
+     */
     @Test
     public void negativeFail() {
         assertNotEquals(2.99, basicOperations.negative(-1.999), 0.0);
     }
 
+    /**
+     * Tests positive for success.
+     */
     @Test
     public void positiveSuccess() {
-        assertEquals(18.0, basicOperations.negative(-18.0), 0.0);
-        assertEquals(25.0, basicOperations.negative(-25.0), 0.0);
-        assertEquals(1000.0, basicOperations.negative(-1000.0), 0.0);
+        assertEquals(18.0, basicOperations.positive(-18.0), 0.0);
+        assertEquals(25.0, basicOperations.positive(-25.0), 0.0);
+        assertEquals(1000.0, basicOperations.positive(-1000.0), 0.0);
     }
 
+
+    /**
+     * Tests positive for failure.
+     */
     @Test
     public void positiveFail() {
-        assertNotEquals(2.99, basicOperations.negative(-1.999), 0.0);
+        assertNotEquals(2.99, basicOperations.positive(-1.999), 0.0);
     }
 
 }

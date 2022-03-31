@@ -24,15 +24,23 @@ public class Main {
     private ArrayList<Float> history = new ArrayList<Float>();
     private float current = 0;
 
+    /**
+     * Calls to mainGui to start the interface.
+     *
+     * @param args default
+     */
     public static void startgui(String[] args) {
         mainGui.main(args);
     }
 
+    /**
+     * Starts GUI
+     *
+     * @param args default
+     */
     public static void main(String[] args) {
 	// write your code here
     // bleh
-
         startgui(args);
-
     }
 }

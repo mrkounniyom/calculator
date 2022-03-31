@@ -17,6 +17,7 @@ public class advOperations {
      * Gets the square root of x
      *
      * @param x value to be find the square root of.
+     * @return the squareroot of x.
      */
     public static double square(double x) {
         return sqrt(x);
@@ -27,6 +28,7 @@ public class advOperations {
      * Gets the square of x
      *
      * @param x value to be find the square of.
+     * @return x squared.
      */
     public static double squared(double x) {
         return abs(x) * abs(x);
@@ -36,6 +38,7 @@ public class advOperations {
      * Turns x into a percent
      *
      * @param x value out of 100.
+     * @return x out of 100.
      */
     public static double percentage(double x) {
         return abs(x) / 100;

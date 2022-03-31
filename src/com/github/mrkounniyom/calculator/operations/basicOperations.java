@@ -20,6 +20,7 @@ public class basicOperations {
      *
      * @param x first value
      * @param y value to be added
+     * @return x + y
      */
     public static double add(double x, double y) {
         BigDecimal temp = BigDecimal.valueOf(x);
@@ -32,6 +33,7 @@ public class basicOperations {
      *
      * @param x first value
      * @param y value to be subtracted
+     * @return x - y
      */
     public static double subtract(double x, double y) {
         BigDecimal temp = BigDecimal.valueOf(x);
@@ -44,6 +46,7 @@ public class basicOperations {
      *
      * @param x first value
      * @param y value to be multiplied
+     * @return x * y
      */
     public static double multiply(double x, double y) {
         BigDecimal temp = BigDecimal.valueOf(x);
@@ -56,6 +59,7 @@ public class basicOperations {
      *
      * @param x first value
      * @param y value to be divided
+     * @return x / y
      */
     public static double divide(double x, double y) {
         BigDecimal temp = BigDecimal.valueOf(x);
@@ -67,6 +71,7 @@ public class basicOperations {
      * Returns the negative of x
      *
      * @param x value to be negative(d)
+     * @return negative x
      */
     public static double negative(double x) {
         return x * -1;
@@ -76,6 +81,7 @@ public class basicOperations {
      * Returns the positive of x
      *
      * @param x value to be positive(d)
+     * @return positive y
      */
     public static double positive(double x) {
         return abs(x);

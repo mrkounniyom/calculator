@@ -171,3 +171,18 @@ if(currentFunc != "") {
 - Added a boolean value to mark if the current value is the 'default' from when the calculator is started up. Using ```currentValue == 0.0d``` caused some issues with trying to use 0.
 - Adjusted histString to not append when the current value is nothing. 
 - Created a button Array List to track when a non "." is pressed when you are appending a decimal. 
+
+### 3-31-2022
+- Kind of a good time to end the project. I want to edit the 'history' area to break up each operation. 
+
+```
+81.0 sqrt = 9
+9.0 + 3.0 = 12
+12.0 - 2.1 = 9.9
+9.9 + 3.1 = 13
+13.0 - 3.0 = 10
+10.0 * 30.0 = 300
+300.0 % = 3
+```
+
+- Edit documentation, gen javadoc

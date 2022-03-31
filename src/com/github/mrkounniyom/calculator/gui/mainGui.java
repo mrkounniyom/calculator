@@ -30,6 +30,7 @@ import java.util.Objects;
  *  - 2/10/2022: Adding logic for button event handling - remapping screen layout.\
  *  - 2/11/2022: Adjusted screenlayout and added more buttons.
  *  - 2/12/2022: Added VERY basic arithmetic and changed how buttons are created/added.
+ *  - 3/31/2022: Final Changes.
  *
  *
  */
@@ -51,10 +52,20 @@ public class mainGui extends Application {
     private String histString = "";
     private ArrayList<String> btnList = new ArrayList<String>();
 
+    /**
+     *  Default main function
+     *
+     * @param args default
+     */
     public static void main(String[] args) {
         launch(args);
     }
 
+    /**
+     * GUI start method from JavaFX
+     *
+     * @param primaryStage
+     */
     @Override
     public void start(Stage primaryStage) {
 
@@ -186,6 +197,7 @@ public class mainGui extends Application {
             else mainArea.setText(String.valueOf(basicOperations.positive(currentValue)));
             ifWhole();
             histStringAdd(previousValue + " " + button + " = " + mainArea.getText());
+            histStringPrint();
             return;
         }
         // sets current function to whatever then returns out of function.
@@ -205,6 +217,7 @@ public class mainGui extends Application {
                 mainArea.setText(String.valueOf(advOperations.squared(previousValue)));
                 ifWhole();
                 histStringAdd(previousValue + " " + button + " = " + mainArea.getText());
+                histStringPrint();
             }
             return;
         }
@@ -215,6 +228,7 @@ public class mainGui extends Application {
                 mainArea.setText(String.valueOf(advOperations.square(previousValue)));
                 ifWhole();
                 histStringAdd(previousValue + " " + button + " = " + mainArea.getText());
+                histStringPrint();
             }
             return;
         }
@@ -225,6 +239,7 @@ public class mainGui extends Application {
                 mainArea.setText(String.valueOf(advOperations.percentage(previousValue)));
                 ifWhole();
                 histStringAdd(previousValue + " " + button + " = " + mainArea.getText());
+                histStringPrint();
             }
             return;
         }
@@ -270,6 +285,7 @@ public class mainGui extends Application {
                 if(equals) {
                     mainArea.setText(String.valueOf(basicOperations.add(previousValue, currentValue)));
                     ifWhole();
+                    histStringAdd(previousValue + " " + currentFunc + " " + currentValue);
                     break;
                 }
                 break;
@@ -278,6 +294,7 @@ public class mainGui extends Application {
                     Double val = basicOperations.subtract(previousValue, currentValue);
                     mainArea.setText(String.valueOf(val));
                     ifWhole();
+                    histStringAdd(previousValue + " " + currentFunc + " " + currentValue);
                     break;
                 }
                 break;
@@ -285,6 +302,7 @@ public class mainGui extends Application {
                 if(equals) {
                     mainArea.setText(String.valueOf(basicOperations.multiply(previousValue, currentValue)));
                     ifWhole();
+                    histStringAdd(previousValue + " " + currentFunc + " " + currentValue);
                     break;
                 }
                 break;
@@ -292,13 +310,14 @@ public class mainGui extends Application {
                 if(equals) {
                     mainArea.setText(String.valueOf(basicOperations.divide(previousValue, currentValue)));
                     ifWhole();
+                    histStringAdd(previousValue + " " + currentFunc + " " + currentValue);
                     break;
                 }
                 break;
         }
-        histStringAdd(previousValue + " " + currentFunc + " " + currentValue);
         if(equals) {
             histStringAdd("= " + mainArea.getText());
+            histStringPrint();
             currentFunc = "";
             equals = false;
             previousValue = Double.parseDouble(mainArea.getText());
@@ -317,15 +336,21 @@ public class mainGui extends Application {
 
     private void histStringAdd(String s) {
         if (!histString.isEmpty()) {
-            histString = histString + ", " + s;
+            histString = histString + " " + s;
         } else {
             histString = s;
         }
 
     }
 
+    private void histStringPrint() {
+        if(!histString.isEmpty()) {
+            hist.appendText(histString + "\n");
+            histString = "";
+        }
+    }
+
     private void reset() {
-        if(!histString.isEmpty()) {hist.appendText(histString + "\n"); histString = "";}
         mainArea.setText("");
         currentFunc = "";
         previousValue = 0.0d;
